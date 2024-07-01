@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>PoeComplete.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PoeComplete.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.</span><span class="s1">JOptionPane</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">PoeComplete </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Welcome to Registration!&quot;</span><span class="s2">);</span>
+        <span class="s1">String Name </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your name:&quot;</span><span class="s2">);</span>
+        <span class="s1">String Surname </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your surname:&quot;</span><span class="s2">);</span>
+        <span class="s1">String username </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">;</span>
+        <span class="s1">String password </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">;</span>
+
+        <span class="s4">// Validate and capture username</span>
+        <span class="s0">boolean </span><span class="s1">isValidUsername </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s2">(!</span><span class="s1">isValidUsername</span><span class="s2">) {</span>
+            <span class="s1">username </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your username (must contain an underscore and be no longer than 5 characters):&quot;</span><span class="s2">);</span>
+            <span class="s1">isValidUsername </span><span class="s2">= </span><span class="s1">isValidUsername</span><span class="s2">(</span><span class="s1">username</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(!</span><span class="s1">isValidUsername</span><span class="s2">) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Username is not correctly formatted. Please ensure that your username contains an underscore and is no more than 5 characters long.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s4">// Validate and capture password</span>
+        <span class="s0">boolean </span><span class="s1">isValidPassword </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s2">(!</span><span class="s1">isValidPassword</span><span class="s2">) {</span>
+            <span class="s1">password </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your password (must be at least 8 characters long, contain a capital letter, a number, and a special character):&quot;</span><span class="s2">);</span>
+            <span class="s1">isValidPassword </span><span class="s2">= </span><span class="s1">isValidPassword</span><span class="s2">(</span><span class="s1">password</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(!</span><span class="s1">isValidPassword</span><span class="s2">) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Password does not meet the complexity requirements. Please try again.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s4">// Display registration success message</span>
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Username and password successfully captured!&quot;</span><span class="s2">);</span>
+
+        <span class="s4">// Login</span>
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Welcome to Login!&quot;</span><span class="s2">);</span>
+        <span class="s1">String enteredUsername </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your username:&quot;</span><span class="s2">);</span>
+        <span class="s1">String enteredPassword </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter your password:&quot;</span><span class="s2">);</span>
+
+        <span class="s4">// Check if username and password match</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">enteredUsername</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">username</span><span class="s2">) &amp;&amp; </span><span class="s1">enteredPassword</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">password</span><span class="s2">)) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Login successfully!&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Login unsuccessful. Please check your username and password.&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+    <span class="s4">// Method to validate the username</span>
+    <span class="s0">private static boolean </span><span class="s1">isValidUsername</span><span class="s2">(</span><span class="s1">String username</span><span class="s2">) {</span>
+        <span class="s0">return </span><span class="s1">username</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() &lt;= </span><span class="s5">5 </span><span class="s2">&amp;&amp; </span><span class="s1">username</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s3">&quot;_&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+    <span class="s4">// Method to validate the password</span>
+    <span class="s0">private static boolean </span><span class="s1">isValidPassword</span><span class="s2">(</span><span class="s1">String password</span><span class="s2">) {</span>
+        <span class="s4">// Password complexity rules</span>
+        <span class="s0">boolean </span><span class="s1">hasCapital </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">boolean </span><span class="s1">hasNumber </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s0">boolean </span><span class="s1">hasSpecialChar </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">char </span><span class="s1">ch </span><span class="s2">: </span><span class="s1">password</span><span class="s2">.</span><span class="s1">toCharArray</span><span class="s2">()) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">Character</span><span class="s2">.</span><span class="s1">isUpperCase</span><span class="s2">(</span><span class="s1">ch</span><span class="s2">)) {</span>
+                <span class="s1">hasCapital </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">Character</span><span class="s2">.</span><span class="s1">isDigit</span><span class="s2">(</span><span class="s1">ch</span><span class="s2">)) {</span>
+                <span class="s1">hasNumber </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(!</span><span class="s1">Character</span><span class="s2">.</span><span class="s1">isLetterOrDigit</span><span class="s2">(</span><span class="s1">ch</span><span class="s2">)) {</span>
+                <span class="s1">hasSpecialChar </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s0">return </span><span class="s1">password</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() &gt;= </span><span class="s5">8 </span><span class="s2">&amp;&amp; </span><span class="s1">hasCapital </span><span class="s2">&amp;&amp; </span><span class="s1">hasNumber </span><span class="s2">&amp;&amp; </span><span class="s1">hasSpecialChar</span><span class="s2">;</span>
+    <span class="s2">}</span>
+    <span class="s0">public static class </span><span class="s1">Task </span><span class="s2">{</span>
+        <span class="s0">public </span><span class="s1">Task</span><span class="s2">(</span><span class="s1">String developerDetails</span><span class="s2">) {</span>
+        <span class="s2">}</span>
+
+        <span class="s0">public static class </span><span class="s1">Main </span><span class="s2">{</span>
+            <span class="s0">private </span><span class="s1">String taskName</span><span class="s2">;</span>
+            <span class="s0">private int </span><span class="s1">taskNumber</span><span class="s2">;</span>
+            <span class="s0">private </span><span class="s1">String taskDescription</span><span class="s2">;</span>
+            <span class="s0">private </span><span class="s1">String developerDetails</span><span class="s2">;</span>
+            <span class="s0">private int </span><span class="s1">taskDuration</span><span class="s2">;</span>
+            <span class="s0">private </span><span class="s1">String taskID</span><span class="s2">;</span>
+            <span class="s0">private </span><span class="s1">String taskStatus</span><span class="s2">;</span>
+
+            <span class="s0">public void </span><span class="s1">Task</span><span class="s2">(</span><span class="s1">String taskName</span><span class="s2">, </span><span class="s1">String developerDetails</span><span class="s2">) {</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskName </span><span class="s2">= </span><span class="s1">taskName</span><span class="s2">;</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">developerDetails </span><span class="s2">= </span><span class="s1">developerDetails</span><span class="s2">;</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskNumber </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s4">// Initialize task number to 0</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskStatus </span><span class="s2">= </span><span class="s3">&quot;To Do&quot;</span><span class="s2">; </span><span class="s4">// Initialize task status to &quot;To Do&quot;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public boolean </span><span class="s1">checkTaskDescription</span><span class="s2">(</span><span class="s1">String description</span><span class="s2">) {</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">description</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() &gt; </span><span class="s5">50</span><span class="s2">) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Please enter a task description of less than 50 characters&quot;</span><span class="s2">);</span>
+                    <span class="s0">return false</span><span class="s2">;</span>
+                <span class="s2">}</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskDescription </span><span class="s2">= </span><span class="s1">description</span><span class="s2">;</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Task successfully captured&quot;</span><span class="s2">);</span>
+                <span class="s0">return true</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public </span><span class="s1">String createTaskID</span><span class="s2">() {</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskID </span><span class="s2">= (</span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskName</span><span class="s2">.</span><span class="s1">substring</span><span class="s2">(</span><span class="s5">0</span><span class="s2">, </span><span class="s5">2</span><span class="s2">) + </span><span class="s3">&quot;:&quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskNumber </span><span class="s2">+ </span><span class="s3">&quot;:&quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">developerDetails</span><span class="s2">.</span><span class="s1">substring</span><span class="s2">(</span><span class="s0">this</span><span class="s2">.</span><span class="s1">developerDetails</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() - </span><span class="s5">3</span><span class="s2">)).</span><span class="s1">toUpperCase</span><span class="s2">();</span>
+                <span class="s0">return this</span><span class="s2">.</span><span class="s1">taskID</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public </span><span class="s1">String printTaskDetails</span><span class="s2">() {</span>
+                <span class="s0">return this</span><span class="s2">.</span><span class="s1">taskStatus </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">developerDetails </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskNumber </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskName </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskDescription </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskID </span><span class="s2">+ </span><span class="s3">&quot;, &quot; </span><span class="s2">+ </span><span class="s0">this</span><span class="s2">.</span><span class="s1">taskDuration</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public int </span><span class="s1">returnTotalHours</span><span class="s2">() {</span>
+                <span class="s0">return this</span><span class="s2">.</span><span class="s1">taskDuration</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public void </span><span class="s1">setTaskDuration</span><span class="s2">(</span><span class="s0">int </span><span class="s1">duration</span><span class="s2">) {</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskDuration </span><span class="s2">= </span><span class="s1">duration</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public void </span><span class="s1">setTaskStatus</span><span class="s2">(</span><span class="s1">String status</span><span class="s2">) {</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskStatus </span><span class="s2">= </span><span class="s1">status</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s0">public void </span><span class="s1">setTaskNumber</span><span class="s2">(</span><span class="s0">int </span><span class="s1">number</span><span class="s2">) {</span>
+                <span class="s0">this</span><span class="s2">.</span><span class="s1">taskNumber </span><span class="s2">= </span><span class="s1">number</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+
+            <span class="s0">public void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Welcome to EasyKanban&quot;</span><span class="s2">);</span>
+                <span class="s0">int </span><span class="s1">numTasks </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter the number of tasks to add&quot;</span><span class="s2">));</span>
+                <span class="s1">Task</span><span class="s2">[] </span><span class="s1">tasks </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Task</span><span class="s2">[</span><span class="s1">numTasks</span><span class="s2">];</span>
+                <span class="s0">int </span><span class="s1">totalHours </span><span class="s2">= </span><span class="s5">0</span><span class="s2">;</span>
+
+                <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">numTasks</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+                    <span class="s1">String taskName </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter task name&quot;</span><span class="s2">);</span>
+                    <span class="s1">String developerDetails </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter developer details&quot;</span><span class="s2">);</span>
+                    <span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">] = </span><span class="s0">new </span><span class="s1">Task</span><span class="s2">(</span><span class="s1">developerDetails</span><span class="s2">);</span>
+
+                    <span class="s1">String description </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter task description&quot;</span><span class="s2">);</span>
+                    <span class="s0">while </span><span class="s2">(!</span><span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">].</span><span class="s1">checkTaskDescription</span><span class="s2">(</span><span class="s1">description</span><span class="s2">)) {</span>
+                        <span class="s1">description </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter task description&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+
+                    <span class="s0">int </span><span class="s1">duration </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s3">&quot;Enter task duration&quot;</span><span class="s2">));</span>
+                    <span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">].</span><span class="s1">setTaskDuration</span><span class="s2">(</span><span class="s1">duration</span><span class="s2">);</span>
+                    <span class="s1">totalHours </span><span class="s2">+= </span><span class="s1">duration</span><span class="s2">;</span>
+
+                    <span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">].</span><span class="s1">setTaskNumber</span><span class="s2">(</span><span class="s1">i</span><span class="s2">);</span>
+                    <span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">].</span><span class="s1">createTaskID</span><span class="s2">();</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">tasks</span><span class="s2">[</span><span class="s1">i</span><span class="s2">].</span><span class="s1">printTaskDetails</span><span class="s2">());</span>
+                <span class="s2">}</span>
+
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Total hours across all tasks: &quot; </span><span class="s2">+ </span><span class="s1">totalHours</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">private void </span><span class="s1">setTaskNumber</span><span class="s2">(</span><span class="s0">int </span><span class="s1">i</span><span class="s2">) {</span>
+        <span class="s2">}</span>
+
+        <span class="s0">private void </span><span class="s1">setTaskDuration</span><span class="s2">(</span><span class="s0">int </span><span class="s1">duration</span><span class="s2">) {</span>
+        <span class="s2">}</span>
+
+        <span class="s0">private </span><span class="s1">Object printTaskDetails</span><span class="s2">() {</span>
+            <span class="s0">return null</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s0">private void </span><span class="s1">createTaskID</span><span class="s2">() {</span>
+
+        <span class="s2">}</span>
+
+        <span class="s0">private boolean </span><span class="s1">checkTaskDescription </span><span class="s2">(</span><span class="s1">String description</span><span class="s2">) {</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s4">// Task class to represent each task</span>
+<span class="s0">class </span><span class="s1">Task </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">String developer</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String taskName</span><span class="s2">;</span>
+    <span class="s0">private int </span><span class="s1">duration</span><span class="s2">;</span>
+    <span class="s0">private boolean </span><span class="s1">done</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Task</span><span class="s2">(</span><span class="s1">String developer</span><span class="s2">, </span><span class="s1">String taskName</span><span class="s2">, </span><span class="s0">int </span><span class="s1">duration</span><span class="s2">, </span><span class="s0">boolean </span><span class="s1">done</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">developer </span><span class="s2">= </span><span class="s1">developer</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">taskName </span><span class="s2">= </span><span class="s1">taskName</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">duration </span><span class="s2">= </span><span class="s1">duration</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">done </span><span class="s2">= </span><span class="s1">done</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getDeveloper</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">developer</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getTaskName</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">taskName</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public int </span><span class="s1">getDuration</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">duration</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">isDone</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">done</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

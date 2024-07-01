@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>TaskManager.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TaskManager.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org</span><span class="s2">.</span><span class="s1">example</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">TaskManager </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s3">// ArrayList to store tasks</span>
+        <span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s0">while </span><span class="s2">(</span><span class="s0">true</span><span class="s2">) {</span>
+            <span class="s3">// Menu options</span>
+            <span class="s1">String</span><span class="s2">[] </span><span class="s1">options </span><span class="s2">= {</span><span class="s4">&quot;Add Task&quot;</span><span class="s2">, </span><span class="s4">&quot;Display Tasks (Done)&quot;</span><span class="s2">, </span><span class="s4">&quot;Longest Duration Task&quot;</span><span class="s2">,</span>
+                    <span class="s4">&quot;Search Task&quot;</span><span class="s2">, </span><span class="s4">&quot;Delete Task&quot;</span><span class="s2">, </span><span class="s4">&quot;Display Report&quot;</span><span class="s2">, </span><span class="s4">&quot;Exit&quot;</span><span class="s2">};</span>
+
+            <span class="s3">// Show menu and get user's choice</span>
+            <span class="s0">int </span><span class="s1">choice </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showOptionDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Choose an option:&quot;</span><span class="s2">, </span><span class="s4">&quot;Task Manager&quot;</span><span class="s2">,</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">DEFAULT_OPTION</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">PLAIN_MESSAGE</span><span class="s2">, </span><span class="s0">null</span><span class="s2">, </span><span class="s1">options</span><span class="s2">, </span><span class="s1">options</span><span class="s2">[</span><span class="s5">0</span><span class="s2">]);</span>
+
+            <span class="s0">switch </span><span class="s2">(</span><span class="s1">choice</span><span class="s2">) {</span>
+                <span class="s0">case </span><span class="s5">0</span><span class="s2">: </span><span class="s3">// Add Task</span>
+                    <span class="s1">addTask</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">1</span><span class="s2">: </span><span class="s3">// Display Tasks (Done)</span>
+                    <span class="s1">displayDoneTasks</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">2</span><span class="s2">: </span><span class="s3">// Longest Duration Task</span>
+                    <span class="s1">displayLongestDurationTask</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">3</span><span class="s2">: </span><span class="s3">// Search Task</span>
+                    <span class="s1">searchTask</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">4</span><span class="s2">: </span><span class="s3">// Delete Task</span>
+                    <span class="s1">deleteTask</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">5</span><span class="s2">: </span><span class="s3">// Display Report</span>
+                    <span class="s1">displayReport</span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s5">6</span><span class="s2">: </span><span class="s3">// Exit</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Exiting Task Manager. Goodbye!&quot;</span><span class="s2">, </span><span class="s4">&quot;Exit&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">;</span>
+                <span class="s0">default</span><span class="s2">:</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to add a new task</span>
+    <span class="s0">private static void </span><span class="s1">addTask</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s1">String developer </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s4">&quot;Enter developer name:&quot;</span><span class="s2">);</span>
+        <span class="s1">String taskName </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s4">&quot;Enter task name:&quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">duration </span><span class="s2">= </span><span class="s1">Integer</span><span class="s2">.</span><span class="s1">parseInt</span><span class="s2">(</span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s4">&quot;Enter task duration in days:&quot;</span><span class="s2">));</span>
+        <span class="s0">boolean </span><span class="s1">done </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showConfirmDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Is the task done?&quot;</span><span class="s2">, </span><span class="s4">&quot;Task Status&quot;</span><span class="s2">,</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">YES_NO_OPTION</span><span class="s2">) == </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">YES_OPTION</span><span class="s2">;</span>
+
+        <span class="s1">Task newTask </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Task</span><span class="s2">(</span><span class="s1">developer</span><span class="s2">, </span><span class="s1">taskName</span><span class="s2">, </span><span class="s1">duration</span><span class="s2">, </span><span class="s1">done</span><span class="s2">);</span>
+        <span class="s1">tasks</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">newTask</span><span class="s2">);</span>
+
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Task added successfully!&quot;</span><span class="s2">, </span><span class="s4">&quot;Task Added&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to display tasks marked as done</span>
+    <span class="s0">private static void </span><span class="s1">displayDoneTasks</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s1">StringBuilder message </span><span class="s2">= </span><span class="s0">new </span><span class="s1">StringBuilder</span><span class="s2">();</span>
+        <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Tasks marked as 'done':</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Task task </span><span class="s2">: </span><span class="s1">tasks</span><span class="s2">) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">isDone</span><span class="s2">()) {</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Developer: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDeveloper</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Name: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getTaskName</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Duration: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDuration</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot; days</span><span class="s0">\n\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">message</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">(), </span><span class="s4">&quot;Tasks Done&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to display the task with the longest duration</span>
+    <span class="s0">private static void </span><span class="s1">displayLongestDurationTask</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s0">int </span><span class="s1">longestDuration </span><span class="s2">= </span><span class="s5">0</span><span class="s2">;</span>
+        <span class="s1">Task longestTask </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Task task </span><span class="s2">: </span><span class="s1">tasks</span><span class="s2">) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDuration</span><span class="s2">() &gt; </span><span class="s1">longestDuration</span><span class="s2">) {</span>
+                <span class="s1">longestDuration </span><span class="s2">= </span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDuration</span><span class="s2">();</span>
+                <span class="s1">longestTask </span><span class="s2">= </span><span class="s1">task</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">longestTask </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">StringBuilder message </span><span class="s2">= </span><span class="s0">new </span><span class="s1">StringBuilder</span><span class="s2">();</span>
+            <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Developer of the task with longest duration:</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Developer: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">longestTask</span><span class="s2">.</span><span class="s1">getDeveloper</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Duration: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">longestTask</span><span class="s2">.</span><span class="s1">getDuration</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot; days</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">message</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">(), </span><span class="s4">&quot;Longest Duration Task&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;No tasks found.&quot;</span><span class="s2">, </span><span class="s4">&quot;Longest Duration Task&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to search for a task by name, developer, and status</span>
+    <span class="s0">private static void </span><span class="s1">searchTask</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s1">String searchTerm </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s4">&quot;Enter task name or developer name:&quot;</span><span class="s2">);</span>
+        <span class="s0">boolean </span><span class="s1">found </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+
+        <span class="s1">StringBuilder message </span><span class="s2">= </span><span class="s0">new </span><span class="s1">StringBuilder</span><span class="s2">();</span>
+        <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Search Results:</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Task task </span><span class="s2">: </span><span class="s1">tasks</span><span class="s2">) {</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getTaskName</span><span class="s2">().</span><span class="s1">equalsIgnoreCase</span><span class="s2">(</span><span class="s1">searchTerm</span><span class="s2">) ||</span>
+                    <span class="s1">task</span><span class="s2">.</span><span class="s1">getDeveloper</span><span class="s2">().</span><span class="s1">equalsIgnoreCase</span><span class="s2">(</span><span class="s1">searchTerm</span><span class="s2">)) {</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Name: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getTaskName</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Developer: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDeveloper</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                <span class="s1">message</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Status: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">isDone</span><span class="s2">() ? </span><span class="s4">&quot;Done&quot; </span><span class="s2">: </span><span class="s4">&quot;Not Done&quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+                <span class="s1">found </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">found</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">message</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">(), </span><span class="s4">&quot;Search Results&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;No matching tasks found.&quot;</span><span class="s2">, </span><span class="s4">&quot;Search Results&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to delete a task by name</span>
+    <span class="s0">private static void </span><span class="s1">deleteTask</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s1">String taskNameToDelete </span><span class="s2">= </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showInputDialog</span><span class="s2">(</span><span class="s4">&quot;Enter task name to delete:&quot;</span><span class="s2">);</span>
+        <span class="s0">boolean </span><span class="s1">found </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s5">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">tasks</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(); </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">Task task </span><span class="s2">= </span><span class="s1">tasks</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getTaskName</span><span class="s2">().</span><span class="s1">equalsIgnoreCase</span><span class="s2">(</span><span class="s1">taskNameToDelete</span><span class="s2">)) {</span>
+                <span class="s1">tasks</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s1">i</span><span class="s2">);</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Task deleted successfully.&quot;</span><span class="s2">, </span><span class="s4">&quot;Delete Task&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+                <span class="s1">found </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+                <span class="s0">break</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(!</span><span class="s1">found</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Task not found.&quot;</span><span class="s2">, </span><span class="s4">&quot;Delete Task&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Method to display a report of all tasks</span>
+    <span class="s0">private static void </span><span class="s1">displayReport</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Task</span><span class="s2">&gt; </span><span class="s1">tasks</span><span class="s2">) {</span>
+        <span class="s1">StringBuilder report </span><span class="s2">= </span><span class="s0">new </span><span class="s1">StringBuilder</span><span class="s2">();</span>
+        <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Report:</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Task task </span><span class="s2">: </span><span class="s1">tasks</span><span class="s2">) {</span>
+            <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Developer: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDeveloper</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Name: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getTaskName</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Duration: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">getDuration</span><span class="s2">()).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot; days</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+            <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;Task Status: &quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s1">task</span><span class="s2">.</span><span class="s1">isDone</span><span class="s2">() ? </span><span class="s4">&quot;Done&quot; </span><span class="s2">: </span><span class="s4">&quot;Not Done&quot;</span><span class="s2">).</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">tasks</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">()) {</span>
+            <span class="s1">report</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;No tasks found.</span><span class="s0">\n</span><span class="s4">&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+        <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s1">report</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">(), </span><span class="s4">&quot;Task Report&quot;</span><span class="s2">, </span><span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">INFORMATION_MESSAGE</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
